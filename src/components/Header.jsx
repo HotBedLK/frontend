@@ -19,7 +19,7 @@ export default function Header() {
 
           {/* SignUp Button */}
           <button
-            className={`px-4 py-1.5 bg-[${theme.button.primary}] text-white rounded-md hover:bg-[${theme.button.hover_primary}] transition cursor-pointer`}
+            className={`px-4 py-1.5 bg-[var(--primary-color)] text-white rounded-md hover:bg-[var(--hover-primary)] transition cursor-pointer`}
           >
             SignUp
           </button>

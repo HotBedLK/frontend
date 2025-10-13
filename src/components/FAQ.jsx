@@ -40,7 +40,7 @@ export default function FAQ() {
           {faqs.map((f, i) => (
             <details
               key={i}
-              className="group bg-white rounded-lg shadow-sm p-4"
+              className="group bg-gray-50 rounded-lg shadow-sm p-4"
               aria-expanded="false"
             >
               <summary className="flex items-center justify-between cursor-pointer text-gray-800 font-medium list-none">
