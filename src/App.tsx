@@ -3,6 +3,7 @@ import Header from "./components/Header.jsx";
 import HeroSearch from "./components/HeroSearch.jsx";
 import StepsCard from "./components/StepsCard.jsx";
 import FAQ from "./components/FAQ.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <StepsCard />
         <FAQ />
       </main>
+      <Footer />
     </div>
   );
 }
