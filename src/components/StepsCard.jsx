@@ -1,5 +1,3 @@
-import { theme } from "../theme";
-
 import { FaArrowRight } from "react-icons/fa";
 
 const StepsCard = () => {

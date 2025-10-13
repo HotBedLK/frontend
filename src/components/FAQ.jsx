@@ -1,5 +1,3 @@
-import { theme } from "../theme";
-
 export default function FAQ() {
   const faqs = [
     {
@@ -23,7 +21,7 @@ export default function FAQ() {
   return (
     <section className="mt-15 pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className={`text-3xl font-bold text-[${theme.button.primary}]`}>
+        <h2 className={`text-3xl font-bold text-[var(--primary-color)]`}>
           Question & Answers
         </h2>
         <p className="mt-2 text-sm text-gray-500">

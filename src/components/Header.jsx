@@ -1,5 +1,3 @@
-import { theme } from "../theme";
-
 export default function Header() {
   return (
     <header className="w-full sticky top-0 bg-gray-100 shadow-sm z-50">

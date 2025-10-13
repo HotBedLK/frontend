@@ -1,5 +1,3 @@
-import { theme } from "../theme";
-
 const SearchCard = () => (
   <div className="mt-8 flex justify-center">
     <form className="w-full max-w-4xl transform -translate-y-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-100 p-6 grid grid-cols-1 sm:grid-cols-8 gap-3 items-center animate-fadeIn">
