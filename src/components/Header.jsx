@@ -11,12 +11,12 @@ export default function Header() {
         {/* Right Buttons */}
         <div className="flex space-x-4">
           {/* Login Button */}
-          <button className="px-5 py-2 border border-gray-400 text-gray-800 rounded-md hover:bg-gray-200 transition cursor-pointer">
+          <button className="px-4 py-1.5 border border-gray-400 text-gray-800 rounded-md hover:bg-gray-200 transition cursor-pointer">
             Login
           </button>
 
           {/* SignUp Button */}
-          <button className="px-5 py-2 bg-[#4a4966] text-white rounded-md hover:bg-[#3d3c5a] transition cursor-pointer">
+          <button className="px-4 py-1.5 bg-[#4a4966] text-white rounded-md hover:bg-[#3d3c5a] transition cursor-pointer">
             SignUp
           </button>
         </div>
