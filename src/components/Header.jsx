@@ -1,3 +1,5 @@
+import { theme } from "../theme";
+
 export default function Header() {
   return (
     <header className="w-full sticky top-0 bg-gray-100 shadow-sm z-50">
@@ -16,7 +18,9 @@ export default function Header() {
           </button>
 
           {/* SignUp Button */}
-          <button className="px-4 py-1.5 bg-[#4a4966] text-white rounded-md hover:bg-[#3d3c5a] transition cursor-pointer">
+          <button
+            className={`px-4 py-1.5 bg-[${theme.button.primary}] text-white rounded-md hover:bg-[${theme.button.hover_primary}] transition cursor-pointer`}
+          >
             SignUp
           </button>
         </div>
