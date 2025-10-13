@@ -2,6 +2,7 @@
 import Header from "./components/Header.jsx";
 import HeroSearch from "./components/HeroSearch.jsx";
 import StepsCard from "./components/StepsCard.jsx";
+import FAQ from "./components/FAQ.jsx";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         {/* for main sectons */}
         <HeroSearch />
         <StepsCard />
+        <FAQ />
       </main>
     </div>
   );

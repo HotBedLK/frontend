@@ -30,7 +30,8 @@ const StepsCard = () => {
 
   return (
     <div
-      className={`bg-[${theme.backgrund.green}] rounded-2xl shadow-lg py-10 px-6 mx-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 text-center md:text-left`}
+      // fix theam error
+      className={`bg-[${theme.backgrund.pink}] rounded-2xl shadow-lg py-10 px-6 mx-15 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 text-center md:text-left`}
     >
       {steps.map((item, index) => (
         <div key={item.step} className="flex gap-4">
