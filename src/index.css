@@ -1,9 +1,1 @@
 @import "tailwindcss";
-
-/* global.css */
-:root {
-  --primary-color: #4a4966;
-  --hover-primary: #3d3c5a;
-  --background-green: #6a8f7f;
-  --background-pink: #bfacb569;
-}

@@ -1,21 +1,14 @@
-// import custom component
-import Header from "./components/Header.jsx";
-import HeroSearch from "./components/HeroSearch.jsx";
-import StepsCard from "./components/StepsCard.jsx";
-import FAQ from "./components/FAQ.jsx";
-import Footer from "./components/Footer.jsx";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-export default function App() {
+function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <Header />
-      <main>
-        {/* for main sectons */}
-        <HeroSearch />
-        <StepsCard />
-        <FAQ />
-      </main>
-      <Footer />
-    </div>
-  );
+    <h1 className='text-4xl font-bold'>HotBed LK</h1>
+  )
 }
+
+export default App
