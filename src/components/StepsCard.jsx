@@ -1,5 +1,7 @@
 import { theme } from "../theme";
 
+import { FaArrowRight } from "react-icons/fa";
+
 const StepsCard = () => {
   const steps = [
     {
@@ -48,8 +50,7 @@ const StepsCard = () => {
           {index !== steps.length - 1 && (
             <div className="hidden md:flex justify-center items-center mx-4">
               {/* Arrow Icon Here */}
-
-              {"-->"}
+              <FaArrowRight></FaArrowRight>
             </div>
           )}
         </div>
