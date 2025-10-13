@@ -7,5 +7,6 @@ export const theme = {
   },
   backgrund: {
     green: "#6a8f7f",
+    pink: "#5e4b4bff",
   },
 };

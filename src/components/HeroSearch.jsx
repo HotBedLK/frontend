@@ -61,12 +61,13 @@ export default function HeroSearch() {
         <img
           src="/images/landing-p-hero-01.png"
           alt="hero"
-          className="w-full h-96 object-cover brightness-75"
+          className="w-full h-105 object-cover brightness-75"
         />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="pt-16 pb-20 sm:pt-12 sm:pb-28">
+        {/* FIX: sm:pb-28 */}
+        <div className="pt-16 pb-20 sm:pt-12 sm:pb-10">
           <div className="text-center text-white mb-6">
             <h1 className="text-3xl sm:text-4xl font-extrabold">
               Find comfortable boarding places near you

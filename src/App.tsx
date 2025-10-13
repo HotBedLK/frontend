@@ -1,6 +1,7 @@
 // import custom component
 import Header from "./components/Header.jsx";
 import HeroSearch from "./components/HeroSearch.jsx";
+import StepsCard from "./components/StepsCard.jsx";
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <main>
         {/* for main sectons */}
         <HeroSearch />
+        <StepsCard />
       </main>
     </div>
   );
