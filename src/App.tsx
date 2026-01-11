@@ -1,10 +1,10 @@
 // import custom component
 
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import HeroSearch from "./components/HeroSearch";
-import StepsCard from "./components/StepsCard";
+import FAQ from "./components/faq/FAQ";
+import Footer from "./components/layout/Footer/Footer";
+import Header from "./components/layout/Navbar/Header";
+import HeroSearch from "./components/search/HeroSearch";
+import StepsCard from "./components/cards/StepsCard";
 
 export default function App() {
   return (
