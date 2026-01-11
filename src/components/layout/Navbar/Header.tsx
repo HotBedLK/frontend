@@ -3,9 +3,12 @@ export default function Header() {
     <header className="w-full sticky top-0 bg-gray-100 shadow-sm z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
         {/* Logo */}
-        <div className="text-2xl font-bold text-gray-800">
-          <span className="text-[#4a4966]">Hotbed</span>
-          <span className="text-green-600">.lk</span>
+        <div className="flex items-center space-x-2">
+          <img
+            src="/images/hotbedlk-logo.png"
+            alt="Hotbed.lk Logo"
+            className="h-8 w-auto"
+            />
         </div>
 
         {/* Right Buttons */}
