@@ -1,4 +1,4 @@
-export default function Header() {
+export default function Navbar() {
   return (
     <header className="w-full sticky top-0 bg-gray-100 shadow-sm z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
@@ -8,7 +8,7 @@ export default function Header() {
             src="/images/hotbedlk-logo.png"
             alt="Hotbed.lk Logo"
             className="h-8 w-auto"
-            />
+          />
         </div>
 
         {/* Right Buttons */}
