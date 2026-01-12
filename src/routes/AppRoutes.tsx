@@ -7,6 +7,7 @@ import Register from "../pages/Auth/Register";
 import ProtectedRoute from "./ProtectedRoute";
 import CreateProperty from "../pages/Property/CreateProperty";
 import MainLayout from "../components/layout/PageWrapper/MainLayout";
+import AuthLayout from "../components/layout/PageWrapper/AuthLayout";
 
 const AppRoutes = () => {
   const isAuthenticated = false; // replace with real auth state
@@ -17,8 +18,11 @@ const AppRoutes = () => {
       <Route element={<MainLayout />}>
         <Route path={ROUTES.HOME} element={<LandingPage />} />
       </Route>
-      <Route path={ROUTES.LOGIN} element={<Login />} />
-      <Route path={ROUTES.REGISTER} element={<Register />} />
+
+      <Route element={<AuthLayout />}>
+        <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.REGISTER} element={<Register />} />
+      </Route>
 
       {/* Protected routes */}
       <Route element={<MainLayout />}>
