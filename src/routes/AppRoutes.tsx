@@ -4,37 +4,49 @@ import { ROUTES } from "./routePaths";
 import LandingPage from "../pages/Landing/LandingPage";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
-import ProtectedRoute from "./ProtectedRoute";
 import CreateProperty from "../pages/Property/CreateProperty";
 import MainLayout from "../components/layout/PageWrapper/MainLayout";
 import AuthLayout from "../components/layout/PageWrapper/AuthLayout";
+import Feed from "../pages/Feed/feed";
+import RoleProtectedRoute from "./RoleProtectedRoute";
+import AdminDashboard from "../pages/dashboard/AdminDashboard";
 
 const AppRoutes = () => {
-  const isAuthenticated = false; // replace with real auth state
-
   return (
     <Routes>
       {/* Public routes */}
-      <Route element={<MainLayout />}>
-        <Route path={ROUTES.HOME} element={<LandingPage />} />
-      </Route>
-
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
         <Route path={ROUTES.REGISTER} element={<Register />} />
       </Route>
 
+      <Route element={<MainLayout />}>
+        <Route path={ROUTES.HOME} element={<LandingPage />} />
+        <Route path={ROUTES.FEED} element={<Feed />} />
+      </Route>
+
       {/* Protected routes */}
       <Route element={<MainLayout />}>
+        {/* LISTERS and ADMIN ONLY */}
         <Route
           path={ROUTES.CREATE_PROPERTY}
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <RoleProtectedRoute allowedRoles={["LISTERS", "ADMIN"]}>
               <CreateProperty />
-            </ProtectedRoute>
+            </RoleProtectedRoute>
           }
         />
       </Route>
+
+      {/* ADMIN ONLY */}
+      <Route
+        path={ROUTES.ADMIN_DASHBOARD}
+        element={
+          <RoleProtectedRoute allowedRoles={["ADMIN"]}>
+            <AdminDashboard />
+          </RoleProtectedRoute>
+        }
+      />
     </Routes>
   );
 };
