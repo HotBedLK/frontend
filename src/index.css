@@ -30,6 +30,18 @@ body {
   font-family: var(--font-body);
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar:vertical {
+  width: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;

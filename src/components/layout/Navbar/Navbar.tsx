@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <header className="w-full sticky top-0 bg-gray-100 shadow-sm z-50">
@@ -14,14 +16,15 @@ export default function Navbar() {
         {/* Right Buttons */}
         <div className="flex space-x-4">
           {/* Login Button */}
-          <button className="px-4 py-1.5 border border-gray-400 text-gray-800 rounded-md hover:bg-gray-200 transition cursor-pointer">
+          <Link
+            to="/login"
+            className="px-4 py-1.5 border border-gray-400 text-gray-800 rounded-md hover:bg-gray-200 transition"
+          >
             Login
-          </button>
+          </Link>
 
           {/* SignUp Button */}
-          <button
-            className={`px-4 py-1.5 bg-[var(--primary-color)] text-white rounded-md hover:bg-[var(--hover-primary)] transition cursor-pointer`}
-          >
+          <button className="px-4 py-1.5 bg-[var(--primary-color)] text-white rounded-md hover:bg-[var(--hover-primary)] transition cursor-pointer">
             SignUp
           </button>
         </div>

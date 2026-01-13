@@ -116,7 +116,7 @@ export default function FeaturedListings() {
                     {listing.price}
                   </p>
 
-                  <button className="font-body mt-5 w-full rounded-lg bg-[#4a4966] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#3d3c5a]">
+                  <button className="font-body mt-5 w-full rounded-lg bg-[#4a4966] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#3d3c5a] hover:cursor-pointer">
                     View
                   </button>
                 </div>

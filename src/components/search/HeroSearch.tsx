@@ -55,11 +55,11 @@ export default function HeroSearch() {
   return (
     <section className="relative">
       {/* Background image */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 ">
         <img
           src="/images/banners/landing-p-hero-01.png"
           alt="hero"
-          className="w-full h-105 object-cover brightness-75"
+          className="w-full h-105 object-cover brightness-75 rounded-b-2xl"
         />
       </div>
 

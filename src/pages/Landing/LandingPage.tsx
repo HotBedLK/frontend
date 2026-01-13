@@ -7,7 +7,7 @@ import HeroSearch from "../../components/search/HeroSearch";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="bg-white text-gray-900">
       <main>
         <HeroSearch />
         <StepsCard />

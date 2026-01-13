@@ -25,15 +25,15 @@ export default function Footer() {
             <span className="text-blue-600">Hotbed</span>.lk
           </h1>
           <p className="mt-2 text-sm text-gray-500">
-            Simple, trusted boarding listings across Sri Lanka.
+            Simple, trusted property listings across Sri Lanka.
           </p>
         </div>
 
-        <div className="text-center md:text-left">
-          <h2 className="text-sm font-semibold text-gray-900">
+        <div className="text-center">
+          <h2 className="text-sm font-semibold text-gray-900 text-center">
             Popular locations
           </h2>
-          <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-500 md:justify-start">
+          <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-500 text-center">
             {locations.map((city) => (
               <li key={city}>{city}</li>
             ))}

@@ -1,7 +1,7 @@
 export default function FAQ() {
   const faqs = [
     {
-      q: "How dows Hotbed.lk help seekers find accommodation easily?",
+      q: "How does Hotbed.lk help seekers find accommodation easily?",
       a: "Hotbed.lk provides advanced filters for seekers to search for boarding places based on specific criteria such as location, price range, facilities, and proximity to key areas. This saves time and ensures seekers find the most relevant options without contacting multiple owners.",
     },
     {
@@ -14,47 +14,51 @@ export default function FAQ() {
     },
     {
       q: "Can I receive notifications for new vacancies?",
-      a: "Yes, Hotbed.lk offers a subscription and alert mechanism that allows seekers to receive notifications whenever a preferred property becomes available. This ensures that seekers are always in the loop about new vacancies without having to search manually.",
+      a: "Yes, Hotbed.lk offers a subscription and alert mechanism that allows seekers to receive notifications whenever a preferred property becomes available. This ensures that seekers are always in the loop about new vacancies without having to search manually.",
     },
   ];
 
   return (
-    <section className="mt-15 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className={`text-3xl font-bold text-[var(--primary-color)]`}>
-          Question & Answers
-        </h2>
-        <p className="mt-2 text-sm text-gray-500">
-          Hotbed.lk aims to address the challenges faced by students, <br />
-          young professionals, and property owners in Sri Lanka's boarding place
-          market.
-          <br />
-          Below are some of the common quastions and answers to help both
-          seekers and owners <br /> understand how the platform works and how it
-          can be help them.
-        </p>
+    <section className="mt-12 pb-16">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+          <div className="text-center">
+            <p className="font-body text-xs uppercase tracking-[0.35em] text-[var(--primary-color)]">
+              FAQs
+            </p>
+            <h2 className="font-display mt-3 text-3xl text-gray-900">
+              Questions & Answers
+            </h2>
+            <p className="font-body mt-3 text-sm text-gray-600">
+              Clear answers for seekers and owners on how Hotbed.lk makes the
+              boarding process easier.
+            </p>
+          </div>
 
-        <div className="mt-6 space-y-3 text-left">
-          {faqs.map((f, i) => (
-            <details
-              key={i}
-              className="group bg-gray-50 rounded-lg shadow-sm p-4"
-              aria-expanded="false"
-            >
-              <summary className="flex items-center justify-between cursor-pointer text-gray-800 font-medium list-none">
-                <span>{f.q}</span>
-                <svg
-                  className="w-5 h-5 transform transition-transform duration-200 group-open:rotate-45"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
-                </svg>
-              </summary>
-              <div className="mt-3 text-sm text-gray-600">{f.a}</div>
-            </details>
-          ))}
+          <div className="mt-6 space-y-3 text-left">
+            {faqs.map((f, i) => (
+              <details
+                key={i}
+                className="group rounded-xl border border-gray-200 bg-gray-50/40 p-4 transition hover:border-gray-300"
+                aria-expanded="false"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-gray-900">
+                  <span className="font-body">{f.q}</span>
+                  <svg
+                    className="h-5 w-5 transform text-gray-500 transition-transform duration-200 group-open:rotate-45"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" />
+                  </svg>
+                </summary>
+                <div className="font-body mt-3 text-sm text-gray-600">
+                  {f.a}
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>
