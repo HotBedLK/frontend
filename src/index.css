@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap");
 
 /* global.css */
 :root {
@@ -6,4 +7,46 @@
   --hover-primary: #3d3c5a;
   --background-green: #6a8f7f;
   --background-pink: #bfacb569;
+  --listing-ink: #1f2b24;
+  --listing-ink-muted: #5a6b63;
+  --listing-sand: #f6efe7;
+  --listing-glow: #f3d3a4;
+  --listing-mint: #cfe7dd;
+  --listing-clay: #b2763d;
+  --listing-line: #eadfd3;
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Roboto", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 700ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in {
+    animation: none;
+  }
 }

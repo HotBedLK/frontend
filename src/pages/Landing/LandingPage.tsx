@@ -2,6 +2,7 @@
 
 import StepsCard from "../../components/cards/StepsCard";
 import FAQ from "../../components/faq/FAQ";
+import FeaturedListings from "../../components/listings/FeaturedListings";
 import HeroSearch from "../../components/search/HeroSearch";
 
 export default function LandingPage() {
@@ -10,6 +11,7 @@ export default function LandingPage() {
       <main>
         <HeroSearch />
         <StepsCard />
+        <FeaturedListings />
         <FAQ />
       </main>
     </div>

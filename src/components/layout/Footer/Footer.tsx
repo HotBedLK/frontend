@@ -1,9 +1,14 @@
 import { FaFacebook, FaInstagram, FaXTwitter, FaTiktok } from "react-icons/fa6";
 
 export default function Footer() {
-  // ✅ Data arrays
-  const leftColumn = ["Colombo", "Kandy", "Anuradhapura", "Jaffna"];
-  const rightColumn = ["Rathnapura", "Ampara", "Galle", "Mathara"];
+  const locations = [
+    "Colombo",
+    "Kandy",
+    "Galle",
+    "Jaffna",
+    "Nugegoda",
+    "Negombo",
+  ];
 
   const socialLinks = [
     { icon: <FaFacebook />, label: "Facebook" },
@@ -13,56 +18,48 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-200 text-gray-900 py-8 px-6 mt-10">
-      <div className="px-10 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-        {/* Left Section */}
-        <div>
-          <h1 className="text-xl font-bold mb-4">
+    <footer className="mt-10 border-t border-gray-200 bg-white text-gray-700">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-6 py-8 text-sm md:grid-cols-3">
+        <div className="text-center md:text-left">
+          <h1 className="text-base font-semibold text-gray-900">
             <span className="text-blue-600">Hotbed</span>.lk
           </h1>
-          <p className="leading-relaxed">
-            Easy boarding. Real-time listings.
-            <br />
-            Connects seekers, owners seamlessly.
-            <br />
-            Saves time, frustration. Reliable, up-to-date.
-            <br />
-            Your ideal place, simply found.
+          <p className="mt-2 text-sm text-gray-500">
+            Simple, trusted boarding listings across Sri Lanka.
           </p>
         </div>
 
-        {/* Middle Section - Dynamic List */}
-        <div className="text-center">
-          <h2 className="font-semibold mb-4">Most Popular Location</h2>
-          <div className="flex justify-center gap-10">
-            <ul className="space-y-1">
-              {leftColumn.map((city, index) => (
-                <li key={index}>{city}</li>
-              ))}
-            </ul>
-            <ul className="space-y-1">
-              {rightColumn.map((city, index) => (
-                <li key={index}>{city}</li>
-              ))}
-            </ul>
-          </div>
+        <div className="text-center md:text-left">
+          <h2 className="text-sm font-semibold text-gray-900">
+            Popular locations
+          </h2>
+          <ul className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-500 md:justify-start">
+            {locations.map((city) => (
+              <li key={city}>{city}</li>
+            ))}
+          </ul>
         </div>
 
-        {/* Right Section - Aligned Social Icons */}
-        <div className="text-right">
-          <h2 className="font-semibold mb-4">Contact Us</h2>
-          <ul className="space-y-2">
+        <div className="text-center md:text-right">
+          <h2 className="text-sm font-semibold text-gray-900">Connect</h2>
+          <ul className="mt-3 flex justify-center gap-3 text-gray-500 md:justify-end">
             {socialLinks.map((social, index) => (
-              <li
-                key={index}
-                className="flex justify-end items-center gap-2 hover:text-blue-600 transition-colors cursor-pointer"
-              >
-                <span className="text-lg">{social.icon}</span>
-                <span>{social.label}</span>
+              <li key={index}>
+                <button
+                  type="button"
+                  className="rounded-full border border-gray-200 p-2 transition hover:text-blue-600"
+                  aria-label={social.label}
+                >
+                  <span className="text-base">{social.icon}</span>
+                </button>
               </li>
             ))}
           </ul>
         </div>
+      </div>
+
+      <div className="border-t border-gray-100 py-4 text-center text-xs text-gray-400">
+        © 2025 Hotbed.lk. All rights reserved.
       </div>
     </footer>
   );
