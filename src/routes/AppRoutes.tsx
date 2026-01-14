@@ -3,7 +3,7 @@ import { ROUTES } from "./routePaths";
 
 import LandingPage from "../pages/Landing/LandingPage";
 import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/Register";
+import PasswordReset from "../pages/Auth/PasswordReset";
 import CreateProperty from "../pages/Property/CreateProperty";
 import MainLayout from "../components/layout/PageWrapper/MainLayout";
 import AuthLayout from "../components/layout/PageWrapper/AuthLayout";
@@ -17,7 +17,7 @@ const AppRoutes = () => {
       {/* Public routes */}
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
-        <Route path={ROUTES.REGISTER} element={<Register />} />
+        <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
       </Route>
 
       <Route element={<MainLayout />}>

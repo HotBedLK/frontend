@@ -21,7 +21,7 @@ export default function FAQ() {
   return (
     <section className="mt-12 pb-16">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
           <div className="text-center">
             <p className="font-body text-xs uppercase tracking-[0.35em] text-[var(--primary-color)]">
               FAQs
@@ -39,7 +39,7 @@ export default function FAQ() {
             {faqs.map((f, i) => (
               <details
                 key={i}
-                className="group rounded-xl border border-gray-200 bg-gray-50/40 p-4 transition hover:border-gray-300"
+                className="group rounded-lg border border-gray-200 bg-gray-50/40 p-4 transition hover:border-gray-300"
                 aria-expanded="false"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-gray-900">

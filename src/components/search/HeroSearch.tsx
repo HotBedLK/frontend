@@ -19,7 +19,7 @@ const SearchCard = () => (
           className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-200"
         />
       </div>
-      <div className="sm:col-span-2 flex gap-2 justify-end">
+      <div className="sm:col-span-2 flex justify-center gap-2 sm:justify-end">
         <button
           type="submit"
           className={`px-10 py-2 rounded-lg bg-[var(--primary-color)] text-white font-semibold hover:bg-[var(--hover-primary)] cursor-pointer`}
@@ -35,7 +35,7 @@ const HowWeWork = () => (
   <section className="sm:pt-6">
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div
-        className={`bg-[var(--background-green)] text-white rounded-xl p-8 shadow-md text-center`}
+        className={`bg-[var(--background-green)] text-white rounded-lg p-8 shadow-md text-center`}
       >
         <h2 className="text-3xl font-bold">How We Work ?</h2>
         <p className="mt-3 text-sm leading-relaxed px-12">
@@ -59,7 +59,7 @@ export default function HeroSearch() {
         <img
           src="/images/banners/landing-p-hero-01.png"
           alt="hero"
-          className="w-full h-105 object-cover brightness-75 rounded-b-2xl"
+          className="w-full h-105 object-cover brightness-75 rounded-b-xl"
         />
       </div>
 
