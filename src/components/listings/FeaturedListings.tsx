@@ -1,11 +1,17 @@
 import { useProperties } from "../../hooks/useProperties";
 import PropertyCard from "../cards/PropertyCard/PropertyCard";
+import { ErrorState, LoadingState } from "../feedback";
 
 export default function FeaturedListings() {
   const { properties, loading, error } = useProperties();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) {
+    return <LoadingState message="Fetching featured listings..." />;
+  }
+
+  if (error) {
+    return <ErrorState message={error} onRetry={() => {}} />;
+  }
 
   return (
     <section className="relative mt-16 pb-12">

@@ -49,8 +49,8 @@ export const useProperties = () => {
         ]);
         // setProperties(data);
       } catch (err) {
-        setError("Failed to load properties");
       } finally {
+        setError("Failed to load properties");
         setLoading(false);
       }
     };
