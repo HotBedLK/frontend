@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
-import { authStore } from "../store/auth.store";
 import type { JSX } from "react";
 import type { UserRole } from "../types/auth.types";
+import { useAuthStore } from "../store/auth.store";
 
 interface RoleProtectedRouteProps {
   allowedRoles: UserRole[];
@@ -12,7 +12,8 @@ const RoleProtectedRoute = ({
   allowedRoles,
   children,
 }: RoleProtectedRouteProps) => {
-  const { isAuthenticated, user } = authStore;
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const user = useAuthStore((s) => s.user);
 
   // Not logged in
   if (!isAuthenticated || !user) {

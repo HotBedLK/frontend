@@ -17,8 +17,8 @@ const AppRoutes = () => {
       {/* Public routes */}
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
-        <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
       </Route>
+      <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
 
       <Route element={<MainLayout />}>
         <Route path={ROUTES.HOME} element={<LandingPage />} />
