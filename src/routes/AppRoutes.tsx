@@ -22,7 +22,6 @@ const AppRoutes = () => {
       <Route element={<VerificationLayout />}>
         <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
       </Route>
-      <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
 
       <Route element={<MainLayout />}>
         <Route path={ROUTES.HOME} element={<LandingPage />} />
