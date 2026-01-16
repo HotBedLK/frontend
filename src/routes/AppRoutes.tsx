@@ -11,6 +11,7 @@ import Feed from "../pages/Feed/feed";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import AdminDashboard from "../pages/dashboard/AdminDashboard";
 import VerificationLayout from "../components/layout/PageWrapper/VerificationLayout";
+import VerifyPhoneNumber from "../pages/Auth/VerifyPhoneNumber";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,10 @@ const AppRoutes = () => {
       </Route>
       <Route element={<VerificationLayout />}>
         <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
+        <Route
+          path={ROUTES.VERIFY_PHONE_NUMBER}
+          element={<VerifyPhoneNumber />}
+        />
       </Route>
 
       <Route element={<MainLayout />}>
