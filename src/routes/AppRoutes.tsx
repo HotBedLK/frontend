@@ -10,6 +10,7 @@ import AuthLayout from "../components/layout/PageWrapper/AuthLayout";
 import Feed from "../pages/Feed/feed";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import AdminDashboard from "../pages/dashboard/AdminDashboard";
+import VerificationLayout from "../components/layout/PageWrapper/VerificationLayout";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,9 @@ const AppRoutes = () => {
       {/* Public routes */}
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
+      </Route>
+      <Route element={<VerificationLayout />}>
+        <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
       </Route>
       <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
 
