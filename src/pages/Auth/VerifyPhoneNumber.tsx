@@ -5,11 +5,11 @@ export default function VerifyPhoneNumber() {
   return (
     <>
       <div className="mt-4 text-center">
-        <h1 className="font-display text-2xl text-gray-900 sm:text-3xl">
+        <h1 className="font-display text-2xl font-bold text-gray-900 sm:text-3xl">
           Verify Your Phone Number
         </h1>
         <p className="mt-2 text-sm text-gray-500">
-          Enter your verification code and vrify you phone number.
+          Enter your verification code to verify your phone number.
         </p>
       </div>
 

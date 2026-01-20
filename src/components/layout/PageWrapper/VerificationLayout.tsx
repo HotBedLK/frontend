@@ -13,6 +13,8 @@ export default function VerificationLayout() {
       />
       <div className="absolute inset-0 bg-black/45" />
 
+      <img src="/images/hotbedlk-logo.png" alt="HotBedLK" className="absolute left-6 top-6 z-20 h-8 md:left-8 md-top-8" />
+
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4 py-12">
         <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
           <div className="flex items-center justify-between">

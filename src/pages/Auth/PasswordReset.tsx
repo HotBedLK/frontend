@@ -7,7 +7,7 @@ export default function PasswordReset() {
   return (
     <>
       <div className="mt-4 text-center">
-        <h1 className="font-display text-2xl text-gray-900 sm:text-3xl">
+        <h1 className="font-display text-2xl font-bold text-gray-900 sm:text-3xl">
           Forgot Your Password?
         </h1>
         <p className="mt-2 text-sm text-gray-500">
