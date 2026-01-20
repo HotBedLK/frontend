@@ -5,25 +5,21 @@ export default function AuthLayout() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="grid min-h-screen grid-cols-1 md:grid-cols-2">
-        {/* Right image */}
-        <div className="relative h-56 md:h-auto">
-          <img
-            src="/images/pages/login-img.png"
-            alt="Auth"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/20" />
-          <img
-            src="/images/hotbedlk-logo.png"
-            alt="Hotbed.lk"
-            className="absolute left-6 top-6 h-8 md:left-8 md:top-8"
-          />
-        </div>
+    <div className="relative min-h-screen">
+      <img
+        src="/images/pages/login-img.png"
+        alt="Auth"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/30" />
+      <img
+        src="/images/hotbedlk-logo.png"
+        alt="Hotbed.lk"
+        className="absolute left-6 top-6 z-20 h-8 md:left-8 md:top-8"
+      />
 
-        {/* Left content */}
-        <div className="flex h-full flex-col justify-center gap-6 px-6 pb-10 sm:px-10 md:pt-10">
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-4 py-12">
+        <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-2xl sm:p-8">
           <button
             onClick={() => navigate(-1)}
             className="flex items-center gap-1 text-xs font-semibold text-gray-500 transition hover:text-gray-900 cursor-pointer"

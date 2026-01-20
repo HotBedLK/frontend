@@ -71,3 +71,26 @@ h6 {
     animation: none;
   }
 }
+
+@keyframes dot-blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+.dot-blink {
+  animation: dot-blink 1.2s infinite ease-in-out;
+}
+
+.dot-blink-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.dot-blink-delay-2 {
+  animation-delay: 0.4s;
+}
