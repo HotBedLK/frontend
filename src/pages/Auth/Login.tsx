@@ -26,12 +26,12 @@ export default function Login() {
   return (
     <>
       {/* Header */}
-      <div>
+      <div className="mb-6 mt-4 text-center">
         <h1 className="font-display text-3xl font-bold text-gray-900">
           Welcome
         </h1>
-        <p className="mt-1 text-sm text-gray-500">
-          Create an account or login with hotbed.lk
+        <p className="mt-2 text-sm text-gray-500">
+          Login or Create an account with hotbed.lk
         </p>
       </div>
 
@@ -55,8 +55,8 @@ export default function Login() {
 
         {error && <p className="text-center text-xs text-red-600">{error}</p>}
         {/* Footer */}
-        <div>
-          <p className="text-center text-xs text-gray-500">
+        <div className="mt-6">
+          <p className="text-center mb-2 text-xs text-gray-500">
             Forget password?{" "}
             <Link
               to="/password-reset"

@@ -14,7 +14,7 @@ export default function FeaturedListings() {
   }
 
   return (
-    <section className="relative mt-16 pb-12">
+    <section className="relative mt-16 pb-12 overflow-x-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute -top-20 right-[-10%] h-64 w-64 rounded-full bg-gradient-to-br from-[var(--listing-glow)] via-[var(--listing-sand)] to-transparent opacity-70 blur-3xl" />
         <div className="absolute bottom-[-25%] left-[-8%] h-72 w-72 rounded-full bg-gradient-to-br from-[var(--listing-mint)] via-white to-transparent opacity-70 blur-3xl" />
@@ -41,9 +41,9 @@ export default function FeaturedListings() {
           </button>
         </div>
 
-        <div className="relative left-1/2 right-1/2 mt-10 w-screen -ml-[50vw] -mr-[50vw] border-y border-[var(--listing-line)] bg-[var(--listing-sand)] py-8 shadow-[0_24px_60px_-40px_rgba(25,20,15,0.5)]">
+        <div className="relative mt-10 -mx-4 border-y border-[var(--listing-line)] bg-[var(--listing-sand)] py-8 shadow-[0_24px_60px_-40px_rgba(25,20,15,0.5)] sm:-mx-6 lg:-mx-8">
           <div className="mx-auto max-w-6xl px-4 sm:px-8">
-            <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:grid-cols-3">
               {properties.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))}
