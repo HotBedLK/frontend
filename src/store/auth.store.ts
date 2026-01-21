@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { loginRequest, registerRequest } from "../services";
 import type { AuthUser } from "../types/auth.types";
 
-
 interface AuthState {
   isAuthenticated: boolean;
   user: AuthUser | null;
@@ -10,7 +9,13 @@ interface AuthState {
   error: string | null;
 
   login: (data: { phone: string; password: string }) => Promise<boolean>;
-  register: (data: { phone: string; password: string }) => Promise<boolean>;
+  register: (data: {
+    first_name: String;
+    last_name: String;
+    password: String;
+    mobile_number: String;
+    email: String;
+  }) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -58,8 +63,8 @@ export const useAuthStore = create<AuthState>((set) => ({
         isLoading: false,
       });
       return false;
-      }
-    },
+    }
+  },
 
   logout: () =>
     set({

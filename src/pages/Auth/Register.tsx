@@ -76,8 +76,11 @@ export default function Register() {
     if (!validate()) return;
 
     const success = await register({
-      phone,
-      password,
+      first_name: fName,
+      last_name: lName,
+      password: password,
+      mobile_number: phone,
+      email: email,
     });
 
     if (success) navigate(from, { replace: true });
