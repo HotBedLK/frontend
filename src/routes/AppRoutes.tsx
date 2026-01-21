@@ -21,9 +21,9 @@ const AppRoutes = () => {
       {/* Public routes */}
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
-        <Route path={ROUTES.REGISTER} element={<Register />} />
       </Route>
       <Route element={<VerificationLayout />}>
+        <Route path={ROUTES.REGISTER} element={<Register />} />
         <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
         <Route
           path={ROUTES.VERIFY_PHONE_NUMBER}
