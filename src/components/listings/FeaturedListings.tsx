@@ -66,7 +66,7 @@ export default function FeaturedListings() {
   };
 
   return (
-    <section className="relative mt-16 pb-12 overflow-x-hidden">
+    <section className="relative mt-16 pb-12 overflow-y-hidden overflow-x-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute -top-20 right-[-10%] h-64 w-64 rounded-full bg-gradient-to-br from-[var(--listing-glow)] via-[var(--listing-sand)] to-transparent opacity-70 blur-3xl" />
         <div className="absolute bottom-[-25%] left-[-8%] h-72 w-72 rounded-full bg-gradient-to-br from-[var(--listing-mint)] via-white to-transparent opacity-70 blur-3xl" />
