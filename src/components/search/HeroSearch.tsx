@@ -1,6 +1,6 @@
 const SearchCard = () => (
   <div className="mt-6 flex justify-center sm:mt-8">
-    <form className="w-full max-w-4xl rounded-xl border border-gray-100 bg-white/95 p-4 shadow-xl mb-10 mt-5 sm:mt-10 backdrop-blur-sm sm:-translate-y-8 sm:p-6 grid grid-cols-1 gap-3 items-center sm:grid-cols-8 animate-fadeIn">
+    <form className="w-full max-w-4xl rounded-xl border border-gray-100 bg-white/95 p-10 shadow-xl mb-10 mt-5 sm:mt-10 backdrop-blur-sm sm:-translate-y-8 sm:p-6 grid grid-cols-1 gap-3 items-center sm:grid-cols-8 animate-fadeIn">
       <div className="sm:col-span-3">
         <label className="sr-only">Location</label>
         <input
