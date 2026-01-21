@@ -1,6 +1,7 @@
 import { create } from "zustand";
-import { loginRequest } from "../services";
+import { loginRequest, registerRequest } from "../services";
 import type { AuthUser } from "../types/auth.types";
+
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -9,6 +10,7 @@ interface AuthState {
   error: string | null;
 
   login: (data: { phone: string; password: string }) => Promise<boolean>;
+  register: (data: { phone: string; password: string }) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -43,6 +45,21 @@ export const useAuthStore = create<AuthState>((set) => ({
       return false;
     }
   },
+  register: async (data) => {
+    set({ isLoading: true, error: null });
+
+    try {
+      await registerRequest(data);
+      set({ isLoading: false });
+      return true;
+    } catch (err: any) {
+      set({
+        error: err.response?.data?.message || "Registration failed",
+        isLoading: false,
+      });
+      return false;
+      }
+    },
 
   logout: () =>
     set({

@@ -13,6 +13,7 @@ import AdminDashboard from "../pages/dashboard/AdminDashboard";
 import VerificationLayout from "../components/layout/PageWrapper/VerificationLayout";
 import VerifyPhoneNumber from "../pages/Auth/VerifyPhoneNumber";
 import NewPassword from "../pages/Auth/NewPassword";
+import Register from "../pages/Auth/Register";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
       {/* Public routes */}
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
+        <Route path={ROUTES.REGISTER} element={<Register />} />
       </Route>
       <Route element={<VerificationLayout />}>
         <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
