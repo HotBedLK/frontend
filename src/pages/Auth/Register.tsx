@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useAuthStore } from "../../store/auth.store";
 import Input from "../../components/ui/Input/Input";
 import Button from "../../components/ui/Button/Button";
-
-const VALID_PREFIXES = ["070", "071", "075", "077"];
+import { ROUTES } from "../../routes/routePaths";
 
 export default function Register() {
   const register = useAuthStore((s) => s.register);
@@ -17,12 +17,15 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [termsError, setTermsError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from || "/";
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -40,14 +43,12 @@ export default function Register() {
     // Phone Number
     if (!phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!/^\d{10}$/.test(phone)) {
-      newErrors.phone = "Phone number must be exactly 10 digits";
-    } else if (!VALID_PREFIXES.includes(phone.substring(0, 3))) {
-      newErrors.phone = "Invalid mobile provider.";
     }
 
-    // Email (optional)
-    if (email.trim()) {
+    // Email
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         newErrors.email = "Invalid email address";
@@ -73,17 +74,27 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setTermsError(null);
     if (!validate()) return;
+    if (!termsAccepted) {
+      setTermsError("Please accept the terms to continue.");
+      return;
+    }
 
     const success = await register({
-      first_name: fName,
-      last_name: lName,
-      password: password,
-      mobile_number: phone,
-      email: email,
+      first_name: fName.trim(),
+      last_name: lName.trim(),
+      password,
+      mobile_number: phone.trim(),
+      email: email.trim(),
     });
 
-    if (success) navigate(from, { replace: true });
+    if (success) {
+      navigate(ROUTES.VERIFY_PHONE_NUMBER, {
+        replace: true,
+        state: { mobile_number: phone.trim(), email: email.trim() },
+      });
+    }
   };
 
   return (
@@ -155,12 +166,27 @@ export default function Register() {
           <label className="text-xs font-semibold text-gray-500">
             Password
           </label>
-          <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            error={errors.password}
-          />
+          <div className="relative">
+            <Input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              error={errors.password}
+              className="pr-12"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-900"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? (
+                <FiEyeOff className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <FiEye className="h-4 w-4" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Confirm Password */}
@@ -168,12 +194,47 @@ export default function Register() {
           <label className="text-xs font-semibold text-gray-500">
             Confirm Password
           </label>
-          <Input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            error={errors.confirmPassword}
-          />
+          <div className="relative">
+            <Input
+              type={showConfirm ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              error={errors.confirmPassword}
+              className="pr-12"
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirm((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-900"
+              aria-label={showConfirm ? "Hide password" : "Show password"}
+            >
+              {showConfirm ? (
+                <FiEyeOff className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <FiEye className="h-4 w-4" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <label className="flex  gap-2 text-xs text-gray-500">
+            <input
+              type="checkbox"
+              checked={termsAccepted}
+              onChange={(e) => {
+                setTermsAccepted(e.target.checked);
+                if (e.target.checked) {
+                  setTermsError(null);
+                }
+              }}
+              className="h-4 w-4 accent-[var(--primary-color)]"
+            />
+            I agree to the Terms of use & Privacy policy
+          </label>
+          {termsError && (
+            <p className="text-center text-xs text-red-600">{termsError}</p>
+          )}
         </div>
 
         <Button loading={isLoading}>Register</Button>
