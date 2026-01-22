@@ -1,7 +1,11 @@
 import { create } from "zustand";
-import { loginRequest, registerRequest } from "../services";
+import {
+  loginRequest,
+  registerRequest,
+  resendOtpRequest,
+  verifyPhoneRequest,
+} from "../services";
 import type { AuthUser } from "../types/auth.types";
-
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -10,7 +14,22 @@ interface AuthState {
   error: string | null;
 
   login: (data: { phone: string; password: string }) => Promise<boolean>;
-  register: (data: { phone: string; password: string }) => Promise<boolean>;
+  register: (data: {
+    first_name: string;
+    last_name: string;
+    password: string;
+    mobile_number: string;
+    email: string;
+  }) => Promise<boolean>;
+  verifyPhone: (data: {
+    email?: string | null;
+    mobile_number?: string | null;
+    otp: string;
+  }) => Promise<boolean>;
+  resendOtp: (data: {
+    email?: string | null;
+    mobile_number?: string | null;
+  }) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -54,12 +73,51 @@ export const useAuthStore = create<AuthState>((set) => ({
       return true;
     } catch (err: any) {
       set({
-        error: err.response?.data?.message || "Registration failed",
+        error:
+          err.response?.data?.error_message ||
+          err.response?.data?.message ||
+          "Registration failed",
         isLoading: false,
       });
       return false;
-      }
-    },
+    }
+  },
+  verifyPhone: async (data) => {
+    set({ isLoading: true, error: null });
+
+    try {
+      await verifyPhoneRequest(data);
+      set({ isLoading: false });
+      return true;
+    } catch (err: any) {
+      set({
+        error:
+          err.response?.data?.error_message ||
+          err.response?.data?.message ||
+          "Verification failed",
+        isLoading: false,
+      });
+      return false;
+    }
+  },
+  resendOtp: async (data) => {
+    set({ isLoading: true, error: null });
+
+    try {
+      await resendOtpRequest(data);
+      set({ isLoading: false });
+      return true;
+    } catch (err: any) {
+      set({
+        error:
+          err.response?.data?.error_message ||
+          err.response?.data?.message ||
+          "Resend failed",
+        isLoading: false,
+      });
+      return false;
+    }
+  },
 
   logout: () =>
     set({
