@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import type { JSX } from "react";
 import type { UserRole } from "../types/auth.types";
 import { useAuthStore } from "../store/auth.store";
+import { ROUTES } from "./routePaths";
 
 interface RoleProtectedRouteProps {
   allowedRoles: UserRole[];
@@ -22,7 +23,7 @@ const RoleProtectedRoute = ({
 
   // Role not allowed
   if (!allowedRoles.includes(user.role)) {
-    return <Navigate to="/feed" replace />;
+    return <Navigate to={ROUTES.HOME_FEED} replace />;
   }
 
   return children;

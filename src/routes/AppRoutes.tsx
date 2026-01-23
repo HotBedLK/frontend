@@ -14,8 +14,12 @@ import VerificationLayout from "../components/layout/PageWrapper/VerificationLay
 import VerifyPhoneNumber from "../pages/Auth/VerifyPhoneNumber";
 import NewPassword from "../pages/Auth/NewPassword";
 import Register from "../pages/Auth/Register";
+import ProtectedRoute from "./ProtectedRoute";
+import { useAuthStore } from "../store/auth.store";
 
 const AppRoutes = () => {
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
   return (
     <Routes>
       {/* Public routes */}
@@ -34,7 +38,14 @@ const AppRoutes = () => {
 
       <Route element={<MainLayout />}>
         <Route path={ROUTES.HOME} element={<LandingPage />} />
-        <Route path={ROUTES.FEED} element={<Feed />} />
+        <Route
+          path={ROUTES.HOME_FEED}
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Feed />
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
       {/* Protected routes */}

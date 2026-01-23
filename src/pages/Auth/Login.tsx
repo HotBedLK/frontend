@@ -6,6 +6,7 @@ import Button from "../../components/ui/Button/Button";
 
 export default function Login() {
   const login = useAuthStore((s) => s.login);
+  const loginDemo = useAuthStore((s) => s.loginDemo);
   const isLoading = useAuthStore((s) => s.isLoading);
   const error = useAuthStore((s) => s.error);
 
@@ -21,6 +22,11 @@ export default function Login() {
     e.preventDefault();
     const success = await login({ phone, password });
     if (success) navigate(from, { replace: true });
+  };
+
+  const handleDemoLogin = () => {
+    loginDemo();
+    navigate("/home", { replace: true });
   };
 
   return (
@@ -52,6 +58,15 @@ export default function Login() {
         />
 
         <Button loading={isLoading}>Login</Button>
+
+        <button
+          type="button"
+          onClick={handleDemoLogin}
+          disabled={isLoading}
+          className="h-12 w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          Demo Login
+        </button>
 
         {error && <p className="text-center text-xs text-red-600">{error}</p>}
         {/* Footer */}

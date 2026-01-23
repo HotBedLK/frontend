@@ -30,6 +30,7 @@ interface AuthState {
     email?: string | null;
     mobile_number?: string | null;
   }) => Promise<boolean>;
+  loginDemo: () => void;
   logout: () => void;
 }
 
@@ -44,6 +45,12 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     try {
       const res = await loginRequest(data);
+      const avatarUrl =
+        res.user.avatar_url ??
+        res.user.avatarUrl ??
+        res.user.profile_image ??
+        res.user.image ??
+        null;
 
       set({
         isAuthenticated: true,
@@ -51,6 +58,7 @@ export const useAuthStore = create<AuthState>((set) => ({
           id: res.user.id,
           name: res.user.name,
           role: res.user.role,
+          avatarUrl,
         },
         isLoading: false,
       });
@@ -118,6 +126,18 @@ export const useAuthStore = create<AuthState>((set) => ({
       return false;
     }
   },
+  loginDemo: () =>
+    set({
+      isAuthenticated: true,
+      user: {
+        id: "demo-user",
+        name: "Demo User",
+        role: "VIEWER",
+        avatarUrl: null,
+      },
+      isLoading: false,
+      error: null,
+    }),
 
   logout: () =>
     set({

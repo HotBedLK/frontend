@@ -39,7 +39,7 @@ const mapDemoProperty = (item: DemoProperty): Property => ({
 });
 
 const fetchLandingProperties = async (): Promise<Property[]> => {
-  const res = await api.get<DemoResponse>("/general/demos");
+  const res = await api.get<DemoResponse>("/general/landing-feed");
   return (res.data.properties ?? []).map(mapDemoProperty);
 };
 
