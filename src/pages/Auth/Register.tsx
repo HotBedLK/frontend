@@ -110,13 +110,18 @@ export default function Register() {
       </div>
 
       {/* Form */}
-      <form className="w-full max-w-lg space-y-4" onSubmit={handleSubmit}>
+      <form
+        className="w-full max-w-lg space-y-4"
+        noValidate
+        onSubmit={handleSubmit}
+      >
         {/* First Name */}
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">
+          <label htmlFor="firstName" className="text-xs font-semibold text-gray-500">
             First Name
           </label>
           <Input
+            id="firstName"
             type="text"
             value={fName}
             onChange={(e) => setFName(e.target.value)}
@@ -126,10 +131,11 @@ export default function Register() {
 
         {/* Last Name */}
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">
+          <label htmlFor="lastName" className="text-xs font-semibold text-gray-500">
             Last Name
           </label>
           <Input
+            id="lastName"
             type="text"
             value={lName}
             onChange={(e) => setLName(e.target.value)}
@@ -139,10 +145,11 @@ export default function Register() {
 
         {/* Phone */}
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">
+          <label htmlFor="phone" className="text-xs font-semibold text-gray-500">
             Phone Number
           </label>
           <Input
+            id="phone"
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
@@ -152,8 +159,11 @@ export default function Register() {
 
         {/* Email */}
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">E-Mail</label>
+          <label htmlFor="email" className="text-xs font-semibold text-gray-500">
+            E-Mail
+          </label>
           <Input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -163,11 +173,12 @@ export default function Register() {
 
         {/* Password */}
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">
+          <label htmlFor="password" className="text-xs font-semibold text-gray-500">
             Password
           </label>
           <div className="relative">
             <Input
+              id="password"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -191,11 +202,12 @@ export default function Register() {
 
         {/* Confirm Password */}
         <div className="space-y-1">
-          <label className="text-xs font-semibold text-gray-500">
+          <label htmlFor="confirmPassword" className="text-xs font-semibold text-gray-500">
             Confirm Password
           </label>
           <div className="relative">
             <Input
+              id="confirmPassword"
               type={showConfirm ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
