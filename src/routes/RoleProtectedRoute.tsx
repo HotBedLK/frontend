@@ -14,7 +14,12 @@ const RoleProtectedRoute = ({
   children,
 }: RoleProtectedRouteProps) => {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const isAuthReady = useAuthStore((s) => s.isAuthReady);
   const user = useAuthStore((s) => s.user);
+
+  if (!isAuthReady) {
+    return null;
+  }
 
   // Not logged in
   if (!isAuthenticated || !user) {

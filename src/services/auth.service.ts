@@ -8,6 +8,11 @@ export const loginRequest = async (data: {
   return res.data;
 };
 
+export const getProfileRequest = async () => {
+  const res = await api.get("/auth/me");
+  return res.data;
+};
+
 export const registerRequest = async (data: {
   first_name: string;
   last_name: string;

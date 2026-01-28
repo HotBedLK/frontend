@@ -2,11 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import BrandLoader from "./components/loading/BrandLoader";
 import AppRoutes from "./routes/AppRoutes";
+import { useAuthStore } from "./store/auth.store";
 
 export default function App() {
   const location = useLocation();
+  const initializeAuth = useAuthStore((s) => s.initialize);
   const [isLoading, setIsLoading] = useState(false);
   const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    void initializeAuth();
+  }, [initializeAuth]);
 
   useEffect(() => {
     if (isFirstRender.current) {

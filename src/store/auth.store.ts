@@ -1,18 +1,22 @@
 import { create } from "zustand";
 import {
   loginRequest,
+  getProfileRequest,
   registerRequest,
   resendOtpRequest,
   verifyPhoneRequest,
 } from "../services";
 import type { AuthUser } from "../types/auth.types";
+import { tokenStorage } from "../services/token.storage";
 
 interface AuthState {
   isAuthenticated: boolean;
+  isAuthReady: boolean;
   user: AuthUser | null;
   isLoading: boolean;
   error: string | null;
 
+  initialize: () => Promise<void>;
   login: (data: {
     mobile_number: string;
     password: string;
@@ -37,37 +41,107 @@ interface AuthState {
   logout: () => void;
 }
 
+const getAvatarUrl = (user: any) =>
+  user?.avatar_url ??
+  user?.avatarUrl ??
+  user?.profile_image ??
+  user?.image ??
+  null;
+
+const mapAuthUser = (payload: any): AuthUser => {
+  const user = payload?.user ?? payload?.data ?? payload ?? {};
+  const firstName = user.first_name ?? user.firstName ?? "";
+  const lastName = user.last_name ?? user.lastName ?? "";
+  const name =
+    user.name ??
+    [firstName, lastName].filter(Boolean).join(" ").trim() ??
+    user.username ??
+    "User";
+  const rawRole = user.role ?? user.user_role ?? "VIEWER";
+  const role = (
+    typeof rawRole === "string" ? rawRole.toUpperCase() : "VIEWER"
+  ) as AuthUser["role"];
+
+  return {
+    id: String(user.id ?? user.user_id ?? user.uuid ?? ""),
+    name,
+    role,
+    avatarUrl: getAvatarUrl(user),
+  };
+};
+
+const extractTokens = (payload: any) => ({
+  accessToken:
+    payload?.token ?? payload?.access_token ?? payload?.accessToken ?? null,
+  refreshToken: payload?.refresh_token ?? payload?.refreshToken ?? null,
+});
+
 export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
+  isAuthReady: false,
   user: null,
   isLoading: false,
   error: null,
+
+  initialize: async () => {
+    const accessToken = tokenStorage.getAccessToken();
+    if (!accessToken) {
+      set({ isAuthenticated: false, user: null, isAuthReady: true });
+      return;
+    }
+
+    set({ error: null });
+    try {
+      const profile = await getProfileRequest();
+      const user = mapAuthUser(profile);
+      set({
+        isAuthenticated: true,
+        user,
+        isAuthReady: true,
+      });
+    } catch {
+      tokenStorage.clearTokens();
+      set({
+        isAuthenticated: false,
+        user: null,
+        isAuthReady: true,
+      });
+    }
+  },
 
   login: async (data) => {
     set({ isLoading: true, error: null });
 
     try {
       const res = await loginRequest(data);
-      const avatarUrl =
-        res.user.avatar_url ??
-        res.user.avatarUrl ??
-        res.user.profile_image ??
-        res.user.image ??
-        null;
+      const { accessToken, refreshToken } = extractTokens(res);
+      if (!accessToken || !refreshToken) {
+        throw new Error("Token response is missing.");
+      }
 
+      tokenStorage.setTokens(accessToken, refreshToken);
+      // const profile = await getProfileRequest();
+      // ths is just a test data because of user profile end point not finalize yet
+      const profile = {
+        user: {
+          id: "12345678",
+          first_name: "Sachintha",
+          last_name: "Nimesh",
+          role: "ADMIN",
+          avatar_url: "/user-avatar-default",
+        },
+      };
+      const user = mapAuthUser(profile);
       set({
         isAuthenticated: true,
-        user: {
-          id: res.user.id,
-          name: res.user.name,
-          role: res.user.role,
-          avatarUrl,
-        },
+        user,
         isLoading: false,
+        isAuthReady: true,
       });
 
       return true;
     } catch (err: any) {
+      tokenStorage.clearTokens();
       set({
         error: err.response?.data?.message || "Login failed",
         isLoading: false,
@@ -140,11 +214,14 @@ export const useAuthStore = create<AuthState>((set) => ({
       },
       isLoading: false,
       error: null,
+      isAuthReady: true,
     }),
 
-  logout: () =>
+  logout: () => {
+    tokenStorage.clearTokens();
     set({
       isAuthenticated: false,
       user: null,
-    }),
+    });
+  },
 }));
