@@ -29,8 +29,12 @@ export default function Navbar() {
                 className="h-9 w-9 rounded-full border border-white/60 object-cover"
               />
             ) : (
-              <FaUserCircle className="text-2xl text-white" aria-label="Profile" />
+              <FaUserCircle
+                className="text-2xl text-white"
+                aria-label="Profile"
+              />
             )}
+            <span>{user.name}</span>
           </div>
         ) : (
           <div className="flex items-center gap-2">

@@ -92,7 +92,17 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     set({ error: null });
     try {
-      const profile = await getProfileRequest();
+      // const profile = await getProfileRequest();
+      // ths is just a test data because of user profile end point not finalize yet
+      const profile = {
+        user: {
+          id: "12345678",
+          first_name: "Sachintha",
+          last_name: "Nimesh",
+          role: "ADMIN",
+          avatar_url: "/user-avatar-default",
+        },
+      };
       const user = mapAuthUser(profile);
       set({
         isAuthenticated: true,
