@@ -10,7 +10,7 @@ export default function Login() {
   const isLoading = useAuthStore((s) => s.isLoading);
   const error = useAuthStore((s) => s.error);
 
-  const [phone, setPhone] = useState("");
+  const [mobile_number, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = await login({ phone, password });
+    const success = await login({ mobile_number, password });
     if (success) navigate(from, { replace: true });
   };
 
@@ -46,7 +46,7 @@ export default function Login() {
         <Input
           type="tel"
           placeholder="0777123456"
-          value={phone}
+          value={mobile_number}
           onChange={(e) => setPhone(e.target.value)}
         />
 

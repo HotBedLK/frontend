@@ -13,7 +13,10 @@ interface AuthState {
   isLoading: boolean;
   error: string | null;
 
-  login: (data: { phone: string; password: string }) => Promise<boolean>;
+  login: (data: {
+    mobile_number: string;
+    password: string;
+  }) => Promise<boolean>;
   register: (data: {
     first_name: string;
     last_name: string;
