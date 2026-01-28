@@ -114,82 +114,82 @@ const FilterGroup = ({ title, options }: FilterGroupProps) => (
 
 export default function Feed() {
   return (
-    <section className="min-h-screen bg-[var(--background-green)]">
-      <div className="mx-auto flex min-h-[calc(100vh-64px)] w-full">
-        <div className="flex w-full flex-col overflow-hidden bg-white shadow-lg">
-          <div className="grid flex-1 min-h-0 gap-6 px-6 py-6 lg:grid-cols-[250px_1fr] lg:items-stretch">
-            <aside className="space-y-5 rounded-xl border border-[#f2d9d9] bg-[#f9eeee] p-4 lg:sticky lg:top-24">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-semibold uppercase tracking-wide text-gray-600">
-                  Filters
-                </span>
-                {/* <span className="h-px flex-1 bg-[#e7cfcf]" /> */}
+    <section className="h-full min-h-0 bg-white">
+      <div className="mx-auto h-full w-full max-w-none px-4 py-6">
+        <div className="grid h-full min-h-0 gap-6 rounded-2xl border border-[var(--listing-line)] bg-white p-4 lg:grid-cols-[260px_1fr]">
+          <aside className="h-full space-y-5 rounded-2xl border border-[#f2d9d9] bg-[#f9eeee] p-4">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-semibold uppercase tracking-wide text-gray-600">
+                Filters
+              </span>
+              {/* <span className="h-px flex-1 bg-[#e7cfcf]" /> */}
+            </div>
+
+            <FilterGroup title="Property Type" options={propertyTypes} />
+            <FilterGroup title="Availability" options={availabilityOptions} />
+
+            <div className="space-y-2">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-600">
+                Price Range
+              </p>
+              <input
+                type="range"
+                min={0}
+                max={150000}
+                defaultValue={65000}
+                className="w-full"
+                style={{ accentColor: "var(--primary-color)" }}
+              />
+              <div className="flex justify-between text-[10px] text-gray-500">
+                <span>0</span>
+                <span>150k+</span>
               </div>
+            </div>
 
-              <FilterGroup title="Property Type" options={propertyTypes} />
-              <FilterGroup title="Availability" options={availabilityOptions} />
+            <FilterGroup title="Features" options={featureOptions} />
+            <FilterGroup title="Beds" options={bedOptions} />
+            <FilterGroup title="Others" options={otherOptions} />
+          </aside>
 
-              <div className="space-y-2">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-600">
-                  Price Range
-                </p>
-                <input
-                  type="range"
-                  min={0}
-                  max={150000}
-                  defaultValue={65000}
-                  className="w-full"
-                  style={{ accentColor: "var(--primary-color)" }}
-                />
-                <div className="flex justify-between text-[10px] text-gray-500">
-                  <span>0</span>
-                  <span>150k+</span>
-                </div>
-              </div>
-
-              <FilterGroup title="Features" options={featureOptions} />
-              <FilterGroup title="Beds" options={bedOptions} />
-              <FilterGroup title="Others" options={otherOptions} />
-            </aside>
-
-            <main className="flex min-h-0 flex-col">
+          <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-[var(--listing-line)] bg-white">
+            <div className="px-6 pt-6">
               <div className="mb-4 flex items-center justify-center gap-3 text-sm font-semibold text-[var(--listing-ink)]">
                 <span className="h-px w-10 bg-[var(--listing-line)]" />
                 <span className="whitespace-nowrap">Featured Properties</span>
                 <span className="h-px w-10 bg-[var(--listing-line)]" />
               </div>
+            </div>
 
-              <div className="flex-1 min-h-0 lg:overflow-y-auto lg:pr-2">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                  {dummyProperties.map((property, index) => (
-                    <PropertyCard
-                      key={property.id}
-                      property={property}
-                      index={index}
-                    />
-                  ))}
-                </div>
+            <div className="flex-1 min-h-0 overflow-y-auto px-6 pb-6">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {dummyProperties.map((property, index) => (
+                  <PropertyCard
+                    key={property.id}
+                    property={property}
+                    index={index}
+                  />
+                ))}
               </div>
+            </div>
 
-              <div className="mt-4 border-t border-[var(--listing-line)] pt-3 flex items-center justify-center gap-2 text-xs">
-                {pages.map((page) => {
-                  const isActive = page === 1;
-                  return (
-                    <button
-                      key={page}
-                      type="button"
-                      className={`h-7 w-7 rounded-full border font-semibold transition ${
-                        isActive
-                          ? "border-[var(--primary-color)] bg-[var(--primary-color)] text-white"
-                          : "border-[#e7dede] bg-white text-gray-600 hover:-translate-y-0.5 hover:shadow-sm"
-                      }`}
-                    >
-                      {page}
-                    </button>
-                  );
-                })}
-              </div>
-            </main>
+            <div className="border-t border-[var(--listing-line)] px-6 py-3 flex items-center justify-center gap-2 text-xs">
+              {pages.map((page) => {
+                const isActive = page === 1;
+                return (
+                  <button
+                    key={page}
+                    type="button"
+                    className={`h-7 w-7 rounded-full border font-semibold transition ${
+                      isActive
+                        ? "border-[var(--primary-color)] bg-[var(--primary-color)] text-white"
+                        : "border-[#e7dede] bg-white text-gray-600 hover:-translate-y-0.5 hover:shadow-sm"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
