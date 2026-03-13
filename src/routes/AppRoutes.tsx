@@ -16,6 +16,7 @@ import NewPassword from "../pages/Auth/NewPassword";
 import Register from "../pages/Auth/Register";
 import ProtectedRoute from "./ProtectedRoute";
 import { useAuthStore } from "../store/auth.store";
+import { Payment } from "../pages/Payment/Payment";
 
 const AppRoutes = () => {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
@@ -23,6 +24,9 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Public routes */}
+      <Route element={<Payment />}>
+        <Route path={ROUTES.PAYMENT} element={<Payment />} />
+      </Route>
       <Route element={<AuthLayout />}>
         <Route path={ROUTES.LOGIN} element={<Login />} />
       </Route>

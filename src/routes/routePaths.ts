@@ -6,6 +6,7 @@ export const ROUTES = {
   NEW_PASSWORD: "/new-password",
   REGISTER: "/register",
   CREATE_PROPERTY: "/property/create",
+  PAYMENT: "/payment",
   HOME_FEED: "/home",
   ADMIN_DASHBOARD: "/admin",
 };
